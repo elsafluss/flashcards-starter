@@ -9,7 +9,7 @@ const Round = require('./Round')
 class Game {
   constructor() {}
 
-  printMessage(deck, round) {
+  printMessage(deck) {
     console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
 
@@ -23,7 +23,6 @@ class Game {
     const card = prototypeQuestions.map(card => {
       return new Card(card.id, card.question, card.answers, card.correctAnswer)
     })
-    const turn = new Turn(0, card)
     const deck = new Deck()
     const currentDeck = deck.createDeck(card)
     const round = new Round(card)
