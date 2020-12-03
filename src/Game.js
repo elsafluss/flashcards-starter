@@ -3,7 +3,6 @@ const prototypeQuestions = data.prototypeData
 const util = require('./util')
 const Deck = require('./Deck')
 const Card = require('./Card')
-const Turn = require('./Turn')
 const Round = require('./Round')
 
 class Game {
@@ -26,7 +25,7 @@ class Game {
     const deck = new Deck()
     const currentDeck = deck.createDeck(card)
     const round = new Round(card)
-    this.printMessage(deck, round)
+    this.printMessage(deck)
     this.printQuestion(round)
     return currentDeck
   }
