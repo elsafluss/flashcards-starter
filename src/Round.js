@@ -1,25 +1,24 @@
-// 'use strict'
+'use strict'
 
 const Turn = require('../src/Turn')
 const Deck = require('../src/Deck')
 const Card = require('../src/Card')
 
 class Round {
-  constructor(card) {
-    this.card = card;
+  constructor(deck) {
+    this.deck = deck; // array of card objects
+    this.currentCard = deck[0] // test this default
     this.turns = 0;
     this.rightAnswers = 0;
     this.incorrectGuesses = []
   }
 
-  returnCurrentCard(id, question, answers, correctAnswer) {
-    const card = new Card(id, question, answers, correctAnswer)
-    const deck = new Deck()
-    deck.currentDeck.push(card)
+  returnCurrentCard() {
+    return this.currentCard
   }
 
-  takeTurn(guess, card) {
-    const turn = new Turn(guess, card)
+  takeTurn(guess) {
+    const turn = new Turn(guess, this.currentCard)
     this.turn = turn
     this.turns++
     turn.evaluateGuess()
@@ -27,9 +26,9 @@ class Round {
     if (feedback === 'correct!') {
       this.rightAnswers++
     }
-    this.card.id++
+    this.currentCard = this.deck[this.turns] // test this again
     if (!turn.evaluateGuess()) {
-      this.incorrectGuesses.push(card.id)
+      this.incorrectGuesses.push(this.currentCard.id)
     }
     return feedback
   }
@@ -39,7 +38,7 @@ class Round {
   }
 
   endRound() {
-    return `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`
+    console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`)
   }
 }
 
