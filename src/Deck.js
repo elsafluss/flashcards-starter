@@ -1,12 +1,11 @@
-const Card = require('../src/Card')
+'use strict'
 
 class Deck {
   constructor() {
     this.currentDeck = [];
   }
 
-  createDeck(cardID, question, answers, correctAnswer) {
-    const card = new Card(cardID, question, answers, correctAnswer)
+  createDeck(card) {
     this.currentDeck.push(card)
     return this.currentDeck
   }

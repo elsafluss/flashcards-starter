@@ -1,10 +1,9 @@
-// const Round = require('../src/Round')
+'use strict'
 
 class Turn {
-  constructor(guess, currentCard) {
+  constructor(guess, card) {
     this.guess = guess;
-    this.currentCard = currentCard;
-    this.turnCount = 0;
+    this.card = card;
   }
 
   returnGuess() {
@@ -12,25 +11,22 @@ class Turn {
   }
 
   returnCard() {
-    return this.currentCard
+    return this.card
   }
 
-  evaluateGuess(currentGuess) {
-    if (this.guess === currentGuess) {
-      this.response = true
-      return true
-    } else {
-      this.response = false
-      return false
-    }
+  evaluateGuess() {
+    return this.guess === this.card.correctAnswer
+  }
+
+  recordGuess() {
+
   }
 
   giveFeedback() {
-    if (this.response === true) {
+    if (this.evaluateGuess()) {
       return 'correct!'
-    } else {
-      return 'incorrect!'
     }
+    return 'incorrect!'
   }
 }
 
