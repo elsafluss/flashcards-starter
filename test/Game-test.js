@@ -4,7 +4,6 @@ const chai = require('chai')
 const expect = chai.expect
 
 const Card = require('../src/Card')
-const Turn = require('../src/Turn')
 const Round = require('../src/Round')
 const Deck = require('../src/Deck')
 const Game = require('../src/Game')
@@ -28,7 +27,6 @@ describe('Game', function () {
   })
 
   it('should create cards', function () {
-    const turn = new Turn('yes', card)
     game.start()
     expect(round.currentCard.id).to.equal(1)
     expect(round.currentCard.question).to.equal('Have a question')
@@ -37,7 +35,6 @@ describe('Game', function () {
   })
 
   it('should put cards in a deck', function () {
-    const turn = new Turn('yes', card)
     game.start()
     expect(round.currentCard).to.deep.equal(card)
   })
