@@ -1,8 +1,6 @@
 'use strict'
 
 const Turn = require('../src/Turn')
-// const Deck = require('../src/Deck')
-// const Card = require('../src/Card')
 
 class Round {
   constructor(deck) {
