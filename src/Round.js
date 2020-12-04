@@ -6,8 +6,8 @@ const Turn = require('../src/Turn')
 
 class Round {
   constructor(deck) {
-    this.deck = deck; // array of card objects
-    this.currentCard = deck[0] // test this default
+    this.deck = deck;
+    this.currentCard = deck.currentDeck[0]
     this.turns = 0;
     this.rightAnswers = 0;
     this.incorrectGuesses = []
@@ -26,10 +26,10 @@ class Round {
     if (feedback === 'correct!') {
       this.rightAnswers++
     }
-    this.currentCard = this.deck[this.turns] // test this again
     if (!turn.evaluateGuess()) {
       this.incorrectGuesses.push(this.currentCard.id)
     }
+    this.currentCard = this.deck.currentDeck[this.turns]
     return feedback
   }
 

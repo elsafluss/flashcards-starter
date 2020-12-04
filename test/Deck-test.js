@@ -23,19 +23,16 @@ describe('Deck', function () {
     const card2 = new Card(2, 'What is your name', ['Elsa', 'Matt', 'Gonzo'], 'Matt')
     deck.createDeck(card1)
     deck.createDeck(card2)
-    expect(deck.currentDeck).to.be.an('array')
-    expect(deck.currentDeck[0]).to.deep.equal(card1)
-    expect(deck.currentDeck[1]).to.deep.equal(card2)
+    expect(deck.cards).to.be.an('array')
+    expect(deck.cards[0]).to.deep.equal(card1)
+    expect(deck.cards[1]).to.deep.equal(card2)
   })
 
   it('should know how many cards there are', function () {
     const card = new Card(1, 'What is my name', ['Elsa', 'Matt', 'Gonzo'], 'Elsa')
     const deck = new Deck()
     deck.createDeck(card)
-    expect(deck.countCards()).to.equal(1)
-    const card1 = new Card(1, 'What is my name', ['Elsa', 'Matt', 'Gonzo'], 'Elsa')
-    deck.createDeck(card1)
-    expect(deck.countCards()).to.equal(2)
+    expect(deck.countCards()).to.equal(deck.cards[0].length)
   })
 
 })

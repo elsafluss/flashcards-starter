@@ -1,13 +1,8 @@
 'use strict'
 
 class Deck {
-  constructor() {
-    this.currentDeck = [];
-  }
-
-  createDeck(card) {
-    this.currentDeck.push(card)
-    return this.currentDeck
+  constructor(cards = []) {
+    this.currentDeck = cards;
   }
 
   countCards() {

@@ -19,15 +19,15 @@ class Game {
   }
 
   start() {
-    const card = prototypeQuestions.map(card => {
-      return new Card(card.id, card.question, card.answers, card.correctAnswer)
+    let cards = prototypeQuestions.map(card => {
+      card = new Card(card.id, card.question, card.answers, card.correctAnswer)
+      return card
     })
-    const deck = new Deck()
-    const currentDeck = deck.createDeck(card)
-    const round = new Round(card)
+    const deck = new Deck(cards)
+    const round = new Round(deck)
     this.printMessage(deck)
     this.printQuestion(round)
-    return currentDeck
+    return cards
   }
 }
 
