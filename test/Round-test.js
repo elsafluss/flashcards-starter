@@ -16,16 +16,14 @@ describe('Round', function () {
 
   it('should be an instance of Round', function () {
     const card = new Card(1, 'What is my name', ['Elsa', 'Matt', 'Gonzo'], 'Elsa')
-    const deck = new Deck()
-    deck.createDeck(card)
+    const deck = new Deck([card])
     const round = new Round(deck)
     expect(round).to.be.an.instanceof(Round)
   })
 
   it('should return the current card', function () {
     const card = new Card(1, 'What is my name', ['Elsa', 'Matt', 'Gonzo'], 'Elsa')
-    const deck = new Deck()
-    deck.createDeck(card)
+    const deck = new Deck([card])
     const round = new Round(deck)
     round.returnCurrentCard(1, 'What is my name', ['Elsa', 'Matt', 'Gonzo'], 'Elsa')
     expect(round.currentCard).to.deep.equal(card)
@@ -40,8 +38,7 @@ describe('Round', function () {
 
     it('should add one to the turn count', function () {
       const card = new Card(1, 'What is my name', ['Elsa', 'Matt', 'Gonzo'], 'Elsa')
-      const deck = new Deck()
-      deck.createDeck(card)
+      const deck = new Deck([card])
       const round = new Round(deck)
       const turn = new Turn('Elsa', card)
       expect(round.turns).to.equal(0)
@@ -52,9 +49,8 @@ describe('Round', function () {
     it('should change the current card to be the next card', function () {
       const card = new Card(1, 'What is my name', ['Elsa', 'Matt', 'Gonzo'], 'Elsa')
       const card1 = new Card(2, 'Another question', ['ok', 'maybe', 'no'], 'maybe')
-      const deck = new Deck()
-      deck.createDeck(card)
-      deck.createDeck(card1)
+      const deck = new Deck([card, card1])
+
       const round = new Round(deck)
       const turn = new Turn('Elsa', card)
       expect(round.currentCard.id).to.equal(1)
@@ -64,8 +60,7 @@ describe('Round', function () {
 
     it('should store id of incorrect guesses', function () {
       const card = new Card(1, 'What is my name', ['Elsa', 'Matt', 'Gonzo'], 'Elsa')
-      const deck = new Deck()
-      deck.createDeck(card)
+      const deck = new Deck([card])
       const round = new Round(deck)
       const turn = new Turn('Matt', card)
       round.takeTurn('Matt')
@@ -83,9 +78,8 @@ describe('Round', function () {
     it('should give feedback', function () {
       const card = new Card(1, 'What is my name', ['Elsa', 'Matt', 'Gonzo'], 'Elsa')
       const card1 = new Card(2, 'Another question', ['ok', 'maybe', 'no'], 'maybe')
-      const deck = new Deck()
-      deck.createDeck(card)
-      deck.createDeck(card1)
+      const deck = new Deck([card, card1])
+
       const turn = new Turn('Elsa', card)
       const turn1 = new Turn('Matt', card)
       const round = new Round(deck)
@@ -96,12 +90,11 @@ describe('Round', function () {
 
   it('should calculate percent correct', function () {
     const card = new Card(1, 'What is my name', ['Elsa', 'Matt', 'Gonzo'], 'Elsa')
-    const deck = new Deck()
-    deck.createDeck(card)
+    const deck = new Deck([card])
     const round = new Round(deck)
     const a = round.rightAnswers = 10
     const b = round.turns = 20
-    expect(round.calculatePercentCorrect()).to.equal(50)
+    expect(round.calculatePercentCorrect()).to.equal('50')
   })
 
 })

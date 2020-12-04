@@ -25,8 +25,8 @@ class Game {
     })
     const deck = new Deck(cards)
     const round = new Round(deck)
-    this.printMessage(deck)
-    this.printQuestion(round)
+    // this.printMessage(deck)
+    // this.printQuestion(round)
     return cards
   }
 }

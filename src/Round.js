@@ -34,7 +34,7 @@ class Round {
   }
 
   calculatePercentCorrect() {
-    return (this.rightAnswers / this.turns) * 100
+    return ((this.rightAnswers / this.turns) * 100).toFixed(0)
   }
 
   endRound() {

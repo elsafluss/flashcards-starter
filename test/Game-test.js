@@ -17,8 +17,7 @@ describe('Game', function () {
 
   it('should be an instance of Game', function () {
     const card = new Card(1, 'Have a question', ['nope', 'yes', 'not this'], 'yes')
-    const deck = new Deck()
-    deck.createDeck(card)
+    const deck = new Deck([card])
     const round = new Round(deck)
     const game = new Game(round)
     expect(game).to.be.an.instanceof(Game)
@@ -26,8 +25,8 @@ describe('Game', function () {
 
   it('should create cards', function () {
     const card = new Card(1, 'Have a question', ['nope', 'yes', 'not this'], 'yes')
-    const deck = new Deck()
-    deck.createDeck(card)
+    const deck = new Deck([card])
+
     const round = new Round(deck)
     const turn = new Turn('yes', card)
     const game = new Game(round)
@@ -40,12 +39,11 @@ describe('Game', function () {
 
   it('should put cards in a deck', function () {
     const card = new Card(1, 'Have a question', ['nope', 'yes', 'not this'], 'yes')
-    const deck = new Deck()
-    deck.createDeck(card)
+    const deck = new Deck([card])
     const round = new Round(deck)
     const turn = new Turn('yes', card)
     const game = new Game(round)
     game.start()
-    expect(round.deck.cards[0]).to.deep.equal(card)
+    expect(round.currentCard).to.deep.equal(card)
   })
 })
